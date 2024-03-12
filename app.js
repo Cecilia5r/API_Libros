@@ -1,0 +1,15 @@
+const express = require("express")
+const app = express();
+
+app.use(express.json());
+// Importamos el Router de Libros
+const librosRouter = require("./routes/Libros");
+// Importamos el Middleware Error Handler
+const errorHandler = require("./middlewares/errorHandler");
+
+app.use("/libros", librosRouter);
+app.use(errorHandler);
+
+app.listen(4000, () => {
+console.log("Servidor iniciado en el puerto 4000");
+});
